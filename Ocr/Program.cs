@@ -19,7 +19,7 @@ namespace Ocr
             var testImagePath = $@"C:\Users\ghiboz\Documents\ShareX\Screenshots\2021-06\firefox_2021-06-24_09-25-17.png";
             if (args.Length > 0)
             {
-                testImagePath = args[0];https://i.imgur.com/uog1tHe.png
+                testImagePath = args[0];
             }
             */
 
