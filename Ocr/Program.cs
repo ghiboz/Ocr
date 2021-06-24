@@ -44,7 +44,8 @@ namespace Ocr
             {
                 var logger = new FormattedConsoleLogger();
                 var resultPrinter = new ResultPrinter(logger);
-                using (var engine = new TesseractEngine(@"C:\Temp\Tesseract-OCR\tessdata", "eng", EngineMode.Default))
+                // using (var engine = new TesseractEngine(@"C:\Temp\Tesseract-OCR\tessdata", "eng", EngineMode.Default))
+                using (var engine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default))
                 {
                     using (var img = Pix.LoadFromFile(testImagePath))
                     {
