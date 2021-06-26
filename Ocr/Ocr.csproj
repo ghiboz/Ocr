@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormattedConsoleLogger.cs" />
+    <Compile Include="ImageToText.cs" />
+    <Compile Include="IOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

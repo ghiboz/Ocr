@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ghiboz.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,9 +13,46 @@ namespace Ocr
 {
     class Program
     {
+        static List<IOperation> op = new List<IOperation>();
+
         [STAThread]
         static void Main(string[] args)
         {
+            op.Add(new ImageToText() { key = 1 });
+
+        MENU:
+
+            op.ForEach(f => f.Disable());
+
+            Console.Clear();
+            Console.WriteLine("OCR!");
+            foreach (var o in op)
+            {
+                Console.WriteLine(o.Menu());
+            }
+            Console.WriteLine("exit to close");
+
+            var elm = Console.ReadLine();
+            while (elm != "exit" && elm != "\\")
+            {
+                foreach (var o in op)
+                {
+                    Console.WriteLine(o.Welcome(elm));
+                }
+                var oper = Console.ReadLine();
+                if (oper == "exit")
+                {
+                    return;
+                }
+                if (oper == "\\")
+                {
+                    goto MENU;
+                }
+                Console.WriteLine(op.Where(x => x.enabled).FirstOrDefault().Operate(oper));
+            }
+
+            //Console.Read(
+            /*
             var imgUrl = Clipboard.GetText();
             if (string.IsNullOrEmpty(imgUrl))
             {
@@ -59,6 +97,7 @@ namespace Ocr
             }
             Console.Write("Press any key to continue . . . ");
             Console.ReadKey(true);
+            */
         }
     }
 }
